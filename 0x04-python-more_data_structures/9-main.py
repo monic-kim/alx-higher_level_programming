@@ -1,4 +1,3 @@
-guillaume@ubuntu:~/0x04$ cat 9-main.py
 #!/usr/bin/python3
 multiply_by_2 = __import__('9-multiply_by_2').multiply_by_2
 print_sorted_dictionary = \
