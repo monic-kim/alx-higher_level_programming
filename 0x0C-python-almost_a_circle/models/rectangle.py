@@ -39,13 +39,12 @@ class Rectangle(Base):
             raise ValueError(" width must be > 0")
         self.__width = value
 
-
     @property
     def height(self):
         """set the height of rectangle"""
         return self.__height
 
-    @height.settr
+    @height.setter
     def height(self, value):
         if type(value) != int:
             raise TypeError("height must be an integer")
@@ -123,40 +122,35 @@ class Rectangle(Base):
                     self.x = arg
                 elif a == 4:
                     self.y = arg
-                a +=1
+                a += 1
 
         elif kwargs and len(kwargs) != 0:
             for k, v in kwargs.items():
                 if k == "id":
                     if v is None:
-                        self.__init__(self.width, self.height, self.x, self,y)
+                        self.__init__(self.width, self.height, self.x, self.y)
                     else:
                         self.id = v
-                    elif k == "width":
-                        self.width = v
-                    elif k == "height":
-                        self.height = v
-                    elif k == "x":
-                        self.x = v
-                    elif k == "y":
-                        self.y = v
+                elif k == "width":
+                    self.width = v
+                elif k == "height":
+                    self.height = v
+                elif k == "x":
+                    self.x = v
+                elif k == "y":
+                    self.y = v
 
     def to_dictionary(self):
         """Return the dictionary representation of a rectangle"""
         return {
                 "id": self.id,
-                "width":self.width,
-                "heigth":self.heigth,
-                "x":self.x
-                "y":self.y
+                "width": self.width,
+                "height": self.height,
+                "x": self.x,
+                "y": self.y
         }
+
     def __str__(self):
         """Return the print() and str() rep of the rectangle"""
-        return "[Rectangle] ({}) {}/{} {}/{}".format(self.id,
-                self.x, self,y, self.width, self.height)
-
-
-
-
-
-    
+        return ("[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.x,
+                self.y, self.width, self.height))
