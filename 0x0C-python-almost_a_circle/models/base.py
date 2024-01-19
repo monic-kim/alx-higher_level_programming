@@ -85,7 +85,7 @@ Number of istantiated Bases.
                 new = cls(1)
             new.update(**dictionary)
             return new
-    
+
     @classmethod
     def load_from_file(cls):
         """Returns a list of classes instanciated
@@ -139,11 +139,11 @@ Number of istantiated Bases.
                 else:
                     fieldnames = ["id", "size", "x", "y"]
                 list_dicts = csv.DictReader(csvfile, fieldnames=fieldnames)
-                list_dicts = [dict([k, int(v)] for k, v in d.items())
-                        for d in list_dicts]
+                list_dicts = ([dict([k, int(v)] for k, v in d.items())
+                               for d in list_dicts])
                 return [cls.create(**d) for d in list_dicts]
         except IOError:
-                return []
+            return []
 
     @staticmethod
     def draw(list_rectangles, list_squares):
